@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="text-center mb-3">Todo List</h1>
+  <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+  <h2>Your Todos</h2>
+  <div *ngIf="this.todos.length === 0">No Todos to display</div>
+  <div *ngFor="let todo of todos; index as i">
+    <app-todo-item
+      [todo]="todo"
+      [i]="i"
+      (todoDelete)="deleteTodo($event)"
+      (todoCheckbox)="toggleTodo($event)"
+    ></app-todo-item>
+    <!-- in line 4 we are saying that deleteTodo is an event whose function will be explained in ts file  -->
+    <!-- passing custom attribute 'todo' in [] as "todo" -->
+    <!-- NgIf Ngfor are directives or say special features of Angular which makes using HTML more efficient -->
+  </div>
+</div>
